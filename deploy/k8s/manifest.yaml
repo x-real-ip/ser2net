@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: ser2net
-          image: "container-image-registry.theautomation.nl/home-automation/home-assistant-init:latest@sha256"
+          image: "container-image-registry.theautomation.nl/home-automation/ser2net:latest@sha256"
           imagePullPolicy: Always
           resources: {}
           securityContext:
