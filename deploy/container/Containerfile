@@ -1,5 +1,6 @@
-FROM alpine:3.16
+FROM debian:stable-slim
 
-RUN apk add --no-cache ser2net
+RUN sudo apt-get update \
+    && sudo apt-get install ser2net
 
 CMD /usr/sbin/ser2net -d -u
