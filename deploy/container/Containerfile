@@ -1,9 +1,7 @@
-FROM debian:buster-slim
+FROM alpine:3.16.0
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    ser2net=3.5-2 rm -rf /var/lib/apt/lists/* \
-    useradd -r -M -d /usr/share/ser2net -G dialout ser2net
+ARG VERSION=3.5.1-r0
 
-USER ser2net
+RUN apk --no-cache add ser2net=${VERSION}
 
 CMD echo -n "Starting " && ser2net -v && ser2net -d -c /etc/ser2net.conf
