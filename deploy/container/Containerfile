@@ -1,9 +1,8 @@
 FROM debian:buster-slim
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    ser2net=3.5-2 \ 
-    && rm -rf /var/lib/apt/lists/* \
-    && useradd -r -M -d /usr/share/ser2net -G dialout ser2net
+    ser2net=3.5-2 rm -rf /var/lib/apt/lists/* \
+    useradd -r -M -d /usr/share/ser2net -G dialout ser2net
 
 USER ser2net
 
