@@ -1,6 +1,5 @@
 FROM debian:stable-slim
 
-RUN apt-get update \
-    && apt-get install ser2net
+RUN apt-get update && apt-get install -Y ser2net
 
 CMD /usr/sbin/ser2net -d -u
