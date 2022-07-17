@@ -1,0 +1,78 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ser2net-rfxcom-config
+  namespace: home-automation
+data:
+  ser2net.conf: |
+    3001:raw:0:/dev/ttyUSB0:38400 8DATABITS NONE 1STOPBIT
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: ser2net
+  namespace: home-automation
+  labels:
+    app.kubernetes.io/name: ser2net
+    app.kubernetes.io/instance: rfxcom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: ser2net
+      app.kubernetes.io/instance: rfxcom
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: ser2net
+        app.kubernetes.io/instance: rfxcom
+    spec:
+      containers:
+        - name: ser2net
+          image: "container-image-registry.theautomation.nl/home-automation/home-assistant-init:latest@sha256"
+          imagePullPolicy: Always
+          resources: {}
+          securityContext:
+            allowPrivilegeEscalation: true
+            privileged: true
+          ports:
+            - containerPort: 3001
+              protocol: TCP
+          volumeMounts:
+            - name: config
+              mountPath: /etc/ser2net.conf
+              subPath: ser2net.conf
+              readOnly: true
+            - name: usb-rfxcom
+              mountPath: /dev/ttyUSB0
+      volumes:
+        - name: config
+          configMap:
+            name: ser2net-rfxcom-config
+        - name: usb-rfxcom
+          hostPath:
+            path: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1HCFOL-if00-port0
+      nodeSelector:
+        feature.node.kubernetes.io/usb-ff_0403_6001.present: "true"
+
+---
+kind: Service
+apiVersion: v1
+metadata:
+  name: ser2net
+  namespace: home-automation
+  labels:
+    app.kubernetes.io/name: ser2net
+    app.kubernetes.io/instance: rfxcom
+spec:
+  selector:
+    app.kubernetes.io/name: ser2net
+    app.kubernetes.io/instance: rfxcom
+  type: ClusterIP
+  ports:
+    - name: http
+      protocol: TCP
+      port: 3001
+      targetPort: 3001
