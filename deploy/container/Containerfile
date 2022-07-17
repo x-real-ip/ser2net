@@ -1,11 +1,12 @@
-FROM jsurf/rpi-raspbian:latest
+FROM debian:buster-slim
 
-RUN [ "cross-build-start" ]
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ser2net=3.5-2 \ 
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd -r -M -d /usr/share/ser2net -G dialout ser2net
 
-ENV TZ Europe/Amsterdam
+COPY ser2net.conf /etc/ser2net.conf
 
-RUN apt-get update && apt-get install -y ser2net && rm -rf /var/lib/apt/lists/*
+USER ser2net
 
-CMD /usr/sbin/ser2net -d -u
-
-RUN [ "cross-build-end" ]
+CMD echo -n "Starting " && ser2net -v && ser2net -d -c /etc/ser2net.conf
