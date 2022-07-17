@@ -56,7 +56,8 @@ spec:
             path: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1HCFOL-if00-port0
       nodeSelector:
         feature.node.kubernetes.io/usb-ff_0403_6001.present: "true"
-
+      imagePullSecrets:
+        - name: container-image-registry-credentials
 ---
 kind: Service
 apiVersion: v1
