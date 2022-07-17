@@ -1,5 +1,11 @@
-FROM ubuntu:bionic
+FROM jsurf/rpi-raspbian:latest
 
-RUN apt-get update && apt-get install -y ser2net
+RUN [ "cross-build-start" ]
+
+ENV TZ Europe/Amsterdam
+
+RUN apt-get update && apt-get install -y ser2net && rm -rf /var/lib/apt/lists/*
 
 CMD /usr/sbin/ser2net -d -u
+
+RUN [ "cross-build-end" ]
