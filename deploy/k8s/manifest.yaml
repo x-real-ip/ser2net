@@ -19,6 +19,8 @@ metadata:
     app.kubernetes.io/instance: rfxcom
 spec:
   replicas: 1
+  strategy:
+    type: Recreate
   selector:
     matchLabels:
       app.kubernetes.io/name: ser2net
@@ -33,8 +35,6 @@ spec:
         - name: ser2net
           image: "container-image-registry.theautomation.nl/home-automation/ser2net:latest@sha256:41812c4f46acf6a8a8c28c173bc9f0c7850d8b67ad0e88fc175bb5ba643c41f6"
           imagePullPolicy: Always
-          strategy:
-            type: Recreate
           resources: {}
           securityContext:
             allowPrivilegeEscalation: true
