@@ -60,7 +60,7 @@ spec:
       taskRef:
         name: replace-image-tag
       runAfter:
-        - build-push-home-assistant-image
+        - build-push-image
       workspaces:
         - name: source
           workspace: shared-data
@@ -76,7 +76,6 @@ spec:
       taskRef:
         name: git-cli
       runAfter:
-        - replace-image-tag-init
         - replace-image-tag
       workspaces:
         - name: ssh-directory
