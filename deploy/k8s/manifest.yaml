@@ -33,7 +33,7 @@ spec:
     spec:
       containers:
         - name: ser2net
-          image: "container-image-registry.theautomation.nl/home-automation/ser2net:latest@sha256:7882ff6ad3b22068b132af8006910cf786a2e14083b3f8d7f22f8f2cc3f3a52c"
+          image: "container-image-registry.theautomation.nl/home-automation/ser2net:latest@sha256:24dc895b738191c0a269da9b3c45f1aba4eea5566874b6446c4f9208c545e7e8"
           imagePullPolicy: Always
           resources: {}
           securityContext:
