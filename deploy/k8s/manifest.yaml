@@ -74,7 +74,6 @@ spec:
   selector:
     app.kubernetes.io/name: ser2net
     app.kubernetes.io/instance: rfxcom
-  type: ClusterIP
   ports:
     - name: http
       protocol: TCP
