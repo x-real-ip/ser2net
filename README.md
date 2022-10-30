@@ -1,5 +1,6 @@
 # ser2net
 
+[![Build Status](https://drone.theautomation.nl/api/badges/theautomation/ser2net/status.svg)](https://drone.theautomation.nl/theautomation/ser2net)
 ![GitHub repo size](https://img.shields.io/github/repo-size/theautomation/ser2net?logo=Github)
 ![GitHub commit activity](https://img.shields.io/github/commit-activity/y/theautomation/ser2net?logo=github)
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/theautomation/ser2net/main?logo=github)
