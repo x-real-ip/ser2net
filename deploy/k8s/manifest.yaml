@@ -1,14 +1,4 @@
 ---
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: ser2net-rfxcom-config
-  namespace: home-automation
-data:
-  ser2net.conf: |
-    3001:raw:0:/dev/ttyUSB0:38400 8DATABITS NONE 1STOPBIT
-
----
 kind: Deployment
 apiVersion: apps/v1
 metadata:
@@ -33,7 +23,7 @@ spec:
     spec:
       containers:
         - name: ser2net
-          image: "container-image-registry.theautomation.nl/home-automation/ser2net:latest@sha256:24dc895b738191c0a269da9b3c45f1aba4eea5566874b6446c4f9208c545e7e8"
+          image: "harbor.k8s.lan/k8s/ser2net:test"
           resources: {}
           securityContext:
             allowPrivilegeEscalation: true
@@ -42,23 +32,16 @@ spec:
             - containerPort: 3001
               protocol: TCP
           volumeMounts:
-            - name: config
-              mountPath: /etc/ser2net.conf
-              subPath: ser2net.conf
-              readOnly: true
             - name: usb-rfxcom
               mountPath: /dev/ttyUSB0
       volumes:
-        - name: config
-          configMap:
-            name: ser2net-rfxcom-config
         - name: usb-rfxcom
           hostPath:
             path: /dev/serial/by-id/usb-RFXCOM_RFXtrx433_A1HCFOL-if00-port0
       nodeSelector:
         feature.node.kubernetes.io/usb-ff_0403_6001.present: "true"
       imagePullSecrets:
-        - name: container-image-registry-credentials
+        - name: harbor-registry-creds
 
 ---
 kind: Service
