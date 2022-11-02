@@ -69,7 +69,6 @@ steps:
     environment:
       REGISTRY_NAME: "k8s"
     commands:
-      - ping -w 5 192.168.100.100
       - sed -i -e
         "s%/$${REGISTRY_NAME}/$${DRONE_REPO_NAME}:.*%/$${REGISTRY_NAME}/$${DRONE_REPO_NAME}:$${DRONE_BUILD_NUMBER}\"%1"
         ./deploy/k8s/manifest.yaml
@@ -93,8 +92,7 @@ steps:
         path: /.kube
     network_mode: host
     commands:
-      - ls
-      - kubectl get pods -n devops
+      - kubectl apply -f ./deploy/k8s/manifest.yaml
 
 volumes:
   - name: kubeconfig
