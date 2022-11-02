@@ -83,6 +83,18 @@ steps:
       ssh_key:
         from_secret: github_ssh_key
 
+  - name: deploy
+    image: bitnami/kubectl
+    network_mode: host
+    commands:
+      - ping -w 5 192.168.100.100
+      - kubectl version --output=yaml
+
+# volumes:
+# - name: kubeconfig
+#   host:
+#     path: /var/lib/
+
 ---
 kind: secret
 name: harbor_registry_drone_password
@@ -96,3 +108,4 @@ name: github_ssh_key
 get:
   path: github-ssh-keys
   name: id_rsa
+
