@@ -88,14 +88,18 @@ steps:
 
   - name: deploy
     image: bitnami/kubectl
+    volumes:
+      - name: kubeconfig
+        path: /.kube
     network_mode: host
     commands:
-      - kubectl version --output=yaml
+      - ls
+      - kubectl get pods -n devops
 
-# volumes:
-# - name: kubeconfig
-#   host:
-#     path: /var/lib/
+volumes:
+  - name: kubeconfig
+    host:
+      path: /var/lib/.kube
 
 ---
 kind: secret
