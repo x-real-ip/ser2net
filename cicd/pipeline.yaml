@@ -92,6 +92,7 @@ steps:
         path: /.kube
     network_mode: host
     commands:
+      - cat ./deploy/k8s/manifest.yaml
       - kubectl apply -f ./deploy/k8s/manifest.yaml
 
 volumes:
