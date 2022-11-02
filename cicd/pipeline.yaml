@@ -69,7 +69,9 @@ steps:
     environment:
       REGISTRY_NAME: "k8s"
     commands:
-      - sed -i -e "s%/$${REGISTRY_NAME}/$${DRONE_REPO_NAME}:.*%/$${REGISTRY_NAME}/$${DRONE_REPO_NAME}:$${DRONE_BUILD_NUMBER}\"%1" ./deploy/k8s/manifest.yaml
+      - sed -i -e
+        "s%/$${REGISTRY_NAME}/$${DRONE_REPO_NAME}:.*%/$${REGISTRY_NAME}/$${DRONE_REPO_NAME}:$${DRONE_BUILD_NUMBER}\"%1"
+        ./deploy/k8s/manifest.yaml
 
   - name: push kubernetes manifest
     image: appleboy/drone-git-push
@@ -108,4 +110,3 @@ name: github_ssh_key
 get:
   path: github-ssh-keys
   name: id_rsa
-
