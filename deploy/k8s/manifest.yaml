@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: ser2net
-          image: "harbor.k8s.lan/k8s/ser2net:11"
+          image: "harbor.k8s.lan/k8s/ser2net:12"
           resources: {}
           securityContext:
             allowPrivilegeEscalation: true
