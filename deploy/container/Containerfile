@@ -1,9 +1,7 @@
 FROM docker.io/alpine:3
 
-ARG VERSION=3.5.1-r0
-
 COPY ./src/ /etc/
 
-RUN apk --no-cache add ser2net=${VERSION}
+RUN apk --no-cache add ser2net
 
 CMD echo -n "Starting " && ser2net -v && ser2net -d -c /etc/ser2net.conf
