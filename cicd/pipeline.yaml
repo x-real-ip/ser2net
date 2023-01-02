@@ -74,7 +74,7 @@ steps:
         ./deploy/k8s/manifest.yaml
 
   - name: push k8s manifest
-    image: appleboy/drone-git-push
+    image: appleboy/drone-git-push:0.2.2
     settings:
       remote_name: "git@github.com:${DRONE_REPO}"
       branch: ${DRONE_BRANCH}
