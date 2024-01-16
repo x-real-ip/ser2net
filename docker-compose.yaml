@@ -1,0 +1,10 @@
+version: "3"
+services:
+  ser2net:
+    image: "ghcr.io/theautomation/ser2net:main"
+    ports:
+      - "3001:3001"
+    network_mode: "bridge"
+    restart: always
+    devices:
+      - /dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0
