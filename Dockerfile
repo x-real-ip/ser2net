@@ -1,4 +1,4 @@
-FROM docker.io/alpine:3
+FROM --platform=linux/arm64 docker.io/alpine:3
 
 COPY ./src/ /etc/
 
