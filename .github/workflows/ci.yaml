@@ -17,4 +17,4 @@ jobs:
     uses: theautomation/github-actions/.github/workflows/build-and-push.yaml@main
     with:
       publish: true
-      platform: "linux/amd64, linux/arm64/v8"
+      platform: "linux/amd64, linux/arm64"

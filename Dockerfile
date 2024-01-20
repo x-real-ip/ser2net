@@ -1,4 +1,4 @@
-FROM --platform=linux/arm64/v8 docker.io/debian:sid-slim
+FROM --platform=linux/arm64 docker.io/debian:sid-slim
 
 COPY ./src/ /etc/
 
