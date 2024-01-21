@@ -3,7 +3,7 @@ version: "3.4"
 services:
   ser2net:
     container_name: ser2net
-    image: ghcr.io/jippi/docker-ser2net
+    image: ghcr.io/theautomation/ser2net:f87b622b338b22ac4e4366eb35d1ecc4b75a8672
     restart: unless-stopped
     network_mode: host
     volumes:
