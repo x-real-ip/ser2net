@@ -1,6 +1,8 @@
+---
 connection: &con01
-  accepter: tcp,3001
+  accepter: telnet,tcp,3001
   enable: on
   options:
     mdns: false
-  connector: serialdev,/dev/ttyACM0, 115200n81, nobreak,local
+  connector:
+    serialdev,/dev/serial/by-id/usb-0658_0200-if00, 115200n81, nobreak,local
