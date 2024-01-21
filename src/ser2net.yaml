@@ -5,4 +5,4 @@ connection: &con01
   options:
     mdns: false
   connector:
-    serialdev,/dev/serial/by-id/usb-0658_0200-if00, 115200n81, nobreak,local
+    serialdev,/dev/serial/by-id/usb-0658_0200-if00, 9600n81, nobreak,local
