@@ -1,0 +1,6 @@
+connection: &con01
+  accepter: tcp,3001
+  enable: on
+  connector: serialdev,/dev/ttyACM0,
+    115200n81,
+    nobreak,local

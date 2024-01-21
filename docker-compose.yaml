@@ -1,10 +1,12 @@
-version: "3"
+---
+version: "3.4"
 services:
   ser2net:
-    image: "ghcr.io/theautomation/ser2net:main"
-    ports:
-      - "3001:3001"
-    network_mode: "bridge"
-    restart: always
+    container_name: ser2net
+    image: ghcr.io/jippi/docker-ser2net
+    restart: unless-stopped
+    network_mode: host
+    volumes:
+      - ./src/ser2net.yaml:/etc/ser2net/ser2net.yaml
     devices:
-      - /dev/serial/by-id/usb-Silicon_Labs_CP2102_USB_to_UART_Bridge_Controller_0001-if00-port0
+      - /dev/ttyACM0
