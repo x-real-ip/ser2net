@@ -5,8 +5,11 @@ services:
     container_name: ser2net
     image: ghcr.io/jippi/docker-ser2net
     restart: unless-stopped
-    network_mode: host
+    networks:
+      - zwave
     volumes:
       - ./src/ser2net.yaml:/etc/ser2net/ser2net.yaml
     devices:
       - /dev/serial/by-id/usb-0658_0200-if00
+networks:
+  zwave:
