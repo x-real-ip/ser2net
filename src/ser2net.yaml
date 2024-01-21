@@ -1,4 +1,22 @@
+%YAML 1.1
 ---
+define: &confver 1.0
+#
+define: &banner Connected to port \N(\d)\r\n
+#
+default:
+      name: local
+      value: true
+      class: serialdev
+#
+default:
+      name: mdns
+      value: false
+#
+default:
+      name: mdns-sysattrs
+      value: true
+#
 connection: &con01
   accepter: telnet,tcp,3001
   enable: on
