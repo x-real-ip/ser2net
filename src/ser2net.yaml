@@ -1,6 +1,19 @@
 %YAML 1.1
 ---
-define: &banner Connected to port \N(\d)\r\n
+# This is a ser2net configuration file, tailored to be rather
+# simple.
+#
+# Find detailed documentation in ser2net.yaml(5)
+# A fully featured configuration file is in
+# /usr/share/doc/ser2net/examples/ser2net.yaml.gz
+#
+# If you find your configuration more useful than this very simple
+# one, please submit it as a bugreport
+
+admin:
+  accepter: tcp,8000
+
+define: &banner \r\nser2net port \p device \d [\B] (Debian GNU/Linux)\r\n\r\n
 
 connection: &zwave
   accepter: tcp,3001
