@@ -1,25 +1,24 @@
 %YAML 1.1
 ---
-# This is a ser2net configuration file, tailored to be rather
-# simple.
-#
-# Find detailed documentation in ser2net.yaml(5)
-# A fully featured configuration file is in
-# /usr/share/doc/ser2net/examples/ser2net.yaml.gz
-#
-# If you find your configuration more useful than this very simple
-# one, please submit it as a bugreport
 
-admin:
-  accepter: tcp,8000
+define: &banner Connected to port \N(\d)\r\n
 
-define: &banner \r\nser2net port \p device \d [\B] (Debian GNU/Linux)\r\n\r\n
+default:
+  name: local
+  value: true
+  class: serialdev
 
-connection: &zwave
-  accepter: tcp,3001
+default:
+  name: mdns
+  value: true
+
+default:
+  name: mdns-sysattrs
+  value: true
+
+connection: &my-console
+  accepter: telnet(rfc2217),mux,certauth(),ssl,tcp,3001
   connector: serialdev,/dev/serial/by-id/usb-0658_0200-if00,9600N81,local
   options:
-    kickolduser: true
-    max-connections: 2
     mdns: false
     banner: *banner
