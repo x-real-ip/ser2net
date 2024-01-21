@@ -1,26 +1,19 @@
 %YAML 1.1
 ---
-define: &confver 1.0
-#
-define: &banner Connected to port \N(\d)\r\n
-#
-default:
-      name: local
-      value: true
-      class: serialdev
-#
-default:
-      name: mdns
-      value: false
-#
-default:
-      name: mdns-sysattrs
-      value: true
-#
-connection: &con01
-  accepter: telnet,tcp,3001
+admin:
+  accepter: telnet(rfc2217),1999
+
+define: &banner1 Ser2net \N,\p,\d,\I \r\n
+
+connection: &3001
+  accepter: telnet(rfc2217),tcp,3001
+  timeout: 600
   enable: on
+  connector: serialdev,/dev/serial/by-id/usb-0658_0200-if00,9600n81,LOCAL
   options:
-    mdns: false
-  connector:
-    serialdev,/dev/serial/by-id/usb-0658_0200-if00, 9600n81, nobreak,local
+    banner: *banner1
+    kickolduser: true
+    trace-both: '/var/log/trace-both-\p'
+    trace-read: '/var/log/trace-read-\p'
+    trace-write: '/var/log/trace-write-\p'
+    trace-timestamp: true
