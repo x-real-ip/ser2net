@@ -10,11 +10,11 @@ default:
 
 default:
   name: mdns
-  value: true
+  value: false
 
 default:
   name: mdns-sysattrs
-  value: true
+  value: false
 
 connection: &my-console
   accepter: telnet(rfc2217),mux,certauth(),ssl,tcp,3001
