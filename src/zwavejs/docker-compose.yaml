@@ -14,7 +14,7 @@ services:
       # Uncomment if you want logs time and dates to match your timezone instead of UTC
       # Available at https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
       - TZ=Europe/Amsterdam
-    devices:
+    # devices:
       # Do not use /dev/ttyUSBX serial devices, as those mappings can change over time.
       # Instead, use the /dev/serial/by-id/X serial device for your Z-Wave stick.
-      - "/dev/serial/by-id/usb-0658_0200-if00:/dev/zwave"
+      # - "/dev/serial/by-id/usb-0658_0200-if00:/dev/zwave"
