@@ -1,7 +1,7 @@
 %YAML 1.1
 ---
 
-connection: &my-zwave
+connection: &zwave-us
     accepter: tcp,3001
     enable: on
     options:
