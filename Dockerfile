@@ -1,7 +1,3 @@
-FROM docker.io/alpine:3
+FROM ghcr.io/jippi/docker-ser2net:4.6.0
 
-COPY ./src/ /etc/
-
-RUN apk --no-cache add ser2net
-
-CMD echo -n "Starting " && ser2net -v && ser2net -d -c /etc/ser2net.conf
+COPY ./src/ /etc/ser2net/

@@ -7,4 +7,4 @@
 
 Application running on Docker <img src="https://github.com/theautomation/infrastructure/blob/main/assets/img/docker.png?raw=true" alt="Docker" style="height: 40px; width:40px;"/>
 
-[ser2net](https://manpages.ubuntu.com/manpages/jammy/man5/ser2net.yaml.5.html): ser2net used to be a program for connection network connections to serial ports.
+[ser2net](https://github.com/jippi/docker-ser2net): ser2net used to be a program for connection network connections to serial ports.
